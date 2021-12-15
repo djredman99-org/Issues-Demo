@@ -23,7 +23,7 @@ body:
       label: What do you want?
       description: Also tell us, how do you expect this to happen from a UI perspective?
       placeholder: Tell us what you need!
-      value: "I want "this" in the product"
+      value: "I want this in the product"
     validations:
       required: true
   - type: dropdown
