@@ -1,0 +1,19 @@
+name: Create Repo
+description: Create a new Repository
+title: "[Repo Request]: "
+labels: ["triage"]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for creating a new Repo!
+  - type: input
+    id: reponame
+    attributes:
+      label: New repo name
+      description: What is the name of the new repository?
+      placeholder: ex. github-repo-name
+    validations:
+      required: false
