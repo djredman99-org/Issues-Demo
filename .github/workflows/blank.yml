@@ -47,4 +47,4 @@ jobs:
         run: |
           issuenum=$(echo "$GITHUB_ISSUE" | jq .number)
           echo The issue number to close is $issuenum
-          curl -X PATCH -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository }}/issues/"$issuenum" -d '{"status":"closed"}'
+          curl -X PATCH -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository }}/issues/"$issuenum" -d '{"state":"closed"}'
