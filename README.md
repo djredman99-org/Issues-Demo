@@ -17,3 +17,5 @@ Both of these items can be seen in this repo
 ## Demonstrates the ability to create issue forms
 
 Issue Forms provides a convenient way to guide users through the issue creation process to capture pertinent data.
+
+Additionally, you can prohibit the ability to create non-templated issues through the use of a issue [config]() file.
