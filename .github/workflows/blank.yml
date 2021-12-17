@@ -9,7 +9,7 @@ on:
     types: opened
 # Hard-coded here, but representing the Topic to set for the created repo
 env:
-  mytopic: "tower-a"
+  mytopic: "originations"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
