@@ -7,9 +7,9 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   issues:
     types: opened
-  
+# Hard-coded here, but representing the Topic to set for the created repo
 env:
-  myname: "test-repo"
+  mytopic: "towerA"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,5 +33,5 @@ jobs:
           repo=${X:22:-1}
           echo $repo
           curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d "{\"name\":\"$repo\"}"
-          curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository_owner }}/$repo/topics -d '{"names":["TowerA"]}'
+          curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository_owner }}/$repo/topics -d '{"names":["${{ env.mytower }}"]}'
 
