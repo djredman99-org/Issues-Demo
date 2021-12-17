@@ -33,6 +33,6 @@ jobs:
         run: |
           X=$(echo "$GITHUB_ISSUE" | jq .body)
           echo $X
-          repo=${X:21:-0}
+          repo=${X:21:8}
           echo $repo
 #         curl -X POST "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d '{"name":"${{ env.myname }}"}'
