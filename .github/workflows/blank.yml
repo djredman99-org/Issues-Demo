@@ -35,4 +35,4 @@ jobs:
           echo $X
           repo=${X:22:-1}
           echo $repo
-          curl -X POST "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d '{"name":"$repo"}'
+          curl -X POST "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d '{"name":$repo}'
