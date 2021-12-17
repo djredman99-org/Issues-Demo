@@ -26,12 +26,25 @@ jobs:
       - name: Dump GitHub context        
         run: echo "$GITHUB_ISSUE"
         
-      - name: Create Repo
+      - name: Get New Repo Name
+        id: getname
         run: |
           X=$(echo "$GITHUB_ISSUE" | jq .body)
           echo $X
           repo=${X:22:-1}
           echo $repo
-          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d "{\"name\":\"$repo\"}"
-          curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository_owner }}/"$repo"/topics -d "{\"names\":[\"${{ env.mytopic }}\"]}"
+          echo "::set-output name=reponame::$repo"
+        
+      - name: Create Repo
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/orgs/${{ github.repository_owner }}/repos -d "{\"name\":\"${{ steps.getname.outputs.reponame }}\"}"
+          
+      - name: Set Topic
+        run: |
+          curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository_owner }}/${{ steps.getname.outputs.reponame }}/topics -d "{\"names\":[\"${{ env.mytopic }}\"]}"
 
+      - name: Close Issue
+        run: |
+          issuenum=$(echo "$GITHUB_ISSUE" | jq .number)
+          echo The issue number to close is $issuenum
+          curl -X PATCH -H "Accept: application/vnd.github.v3+json" -H "Authorization: bearer ${{ secrets.My_PAT }}" https://api.github.com/repos/${{ github.repository }}/issues/"$issuenum" -d '{"status":"closed"}'
