@@ -10,6 +10,6 @@ This will create a new repo, add a topic to the repo, and close the issue.
 What this needs in place is:
 
 1. An Issue Template in a .github/ISSUE_TEMPLATES folder of the repo
-2. A workflow that triggers on an issue being opened
+2. A [workflow](https://github.com/djredman99-org/Issues-Demo/blob/main/.github/workflows/issueop.yml) that triggers on an issue being opened
 
 Both of these items can be seen in this repo
