@@ -20,4 +20,4 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: bearer ${{github.token}}" https://api.github.com/repos/djredman99-org/Issue-Demo/issues -d '{"title":"Found a bug","body":"I'\''m having a problem with this."}'
+          curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: bearer ${{github.token}}" https://api.github.com/repos/djredman99-org/Issues-Demo/issues -d '{"title":"Found a bug","body":"I'\''m having a problem with this."}'
