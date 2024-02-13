@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/djredman99-org/Issues-Demo/actions/workflows/codeql.yml/badge.svg)](https://github.com/djredman99-org/Issues-Demo/actions/workflows/codeql.yml)
+
 # Issues-Demo
 
 ## Demonstrates how to use Issues to trigger automations
